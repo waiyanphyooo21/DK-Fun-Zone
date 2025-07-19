@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - DK FunZone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../dashboard.html">
+                <i class="fas fa-gamepad me-2"></i>FunZone
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../dashboard.html">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                </a>
+                <!-- Remove the dark mode toggle button -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="text-center mb-4">
+                        <h1 class="display-4 text-warning">
+                            <i class="fas fa-hand-rock me-3"></i>Rock Paper Scissors
+                        </h1>
+                        <p class="lead">Challenge the computer in this classic game!</p>
+                    </div>
+
+                    <div class="game-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card game-board-card">
+                                    <div class="card-body">
+                                        <div class="game-arena">
+                                            <div class="row text-center mb-4">
+                                                <div class="col-5">
+                                                    <div class="player-section">
+                                                        <h4 class="text-primary">You</h4>
+                                                        <div class="choice-display" id="playerChoice">
+                                                            <i class="fas fa-question fa-4x text-muted"></i>
+                                                        </div>
+                                                        <p class="mt-2">Make your choice!</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 d-flex align-items-center justify-content-center">
+                                                    <div class="vs-section">
+                                                        <h3 class="text-secondary">VS</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <div class="computer-section">
+                                                        <h4 class="text-danger">Computer</h4>
+                                                        <div class="choice-display" id="computerChoice">
+                                                            <i class="fas fa-question fa-4x text-muted"></i>
+                                                        </div>
+                                                        <p class="mt-2">Thinking...</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="result-section text-center mb-4">
+                                                <div id="gameResult" class="game-result">
+                                                    <h3 class="text-muted">Choose your weapon!</h3>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="choices-section text-center">
+                                                <h5 class="mb-3">Make Your Choice:</h5>
+                                                <div class="choice-buttons">
+                                                    <button class="btn btn-outline-primary choice-btn me-3" data-choice="rock">
+                                                        <i class="fas fa-hand-rock fa-2x"></i>
+                                                        <div>Rock</div>
+                                                    </button>
+                                                    <button class="btn btn-outline-success choice-btn me-3" data-choice="paper">
+                                                        <i class="fas fa-hand-paper fa-2x"></i>
+                                                        <div>Paper</div>
+                                                    </button>
+                                                    <button class="btn btn-outline-warning choice-btn" data-choice="scissors">
+                                                        <i class="fas fa-hand-scissors fa-2x"></i>
+                                                        <div>Scissors</div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="game-controls text-center mt-4">
+                                                <button id="resetGame" class="btn btn-secondary">
+                                                    <i class="fas fa-redo me-2"></i>New Game
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Score Board</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="score-display text-center mb-3">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="score-item">
+                                                        <h3 class="text-primary mb-0" id="playerScore">0</h3>
+                                                        <small>You</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="score-item">
+                                                        <h3 class="text-danger mb-0" id="computerScore">0</h3>
+                                                        <small>Computer</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="stat-row">
+                                            <span>Games Played:</span>
+                                            <span class="fw-bold" id="gamesPlayed">0</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span>Win Rate:</span>
+                                            <span class="fw-bold text-success" id="winRate">0%</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span>Current Streak:</span>
+                                            <span class="fw-bold" id="currentStreak">0</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span>Best Streak:</span>
+                                            <span class="fw-bold" id="bestStreak">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mt-3">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Game Rules</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2">
+                                                <i class="fas fa-hand-rock text-primary me-2"></i>
+                                                Rock beats Scissors
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-hand-paper text-success me-2"></i>
+                                                Paper beats Rock
+                                            </li>
+                                            <li class="mb-2">
+                                                <i class="fas fa-hand-scissors text-warning me-2"></i>
+                                                Scissors beats Paper
+                                            </li>
+                                            <li>
+                                                <i class="fas fa-equals text-secondary me-2"></i>
+                                                Same choice = Tie
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mt-3">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-history me-2"></i>Recent Games</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="gameHistory" class="game-history">
+                                            <p class="text-muted text-center">No games played yet</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-info-circle text-primary me-2"></i>
+                <strong class="me-auto">DK FunZone</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastMessage"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
+    <script src="rock-paper-scissors.js"></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - DK FunZone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="dashboard.html">
+                <i class="fas fa-gamepad me-2"></i>DK FunZone
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="leaderboard.html">Leaderboard</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <img id="navProfileImage" src="/placeholder.svg" alt="Profile" class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover; display: none;">
+            <i id="navProfileIcon" class="fas fa-user-circle me-2"></i>
+            <span id="userNameNav">Player</span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i>Profile Settings</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+        </ul>
+    </li>
+</ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Leaderboard Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">
+                    <i class="fas fa-trophy me-3"></i>Leaderboard
+                </h1>
+                <p class="lead text-secondary">See how you rank against other players!</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="mb-0"><i class="fas fa-crown me-2 text-warning"></i>Top Players</h5>
+                                </div>
+                                <div class="col-auto">
+                                    <select class="form-select form-select-sm" id="gameFilter">
+                                        <option value="overall">Overall Score</option>
+                                        <option value="tic-tac-toe">Tic-Tac-Toe</option>
+                                        <option value="snake">Snake Game</option>
+                                        <option value="rock-paper-scissors">Rock Paper Scissors</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Player</th>
+                                            <th>Score</th>
+                                            <th>Games Played</th>
+                                            <th>Win Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaderboardTable">
+                                        <tr>
+                                            <td>
+                                                <span class="rank-badge rank-1">1</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-crown text-warning me-2"></i>
+                                                    <strong>GameMaster2024</strong>
+                                                </div>
+                                            </td>
+                                            <td><span class="fw-bold text-success">15,420</span></td>
+                                            <td>156</td>
+                                            <td><span class="badge bg-success">89%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="rank-badge rank-2">2</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-medal text-secondary me-2"></i>
+                                                    <strong>SnakeCharmer</strong>
+                                                </div>
+                                            </td>
+                                            <td><span class="fw-bold text-success">12,890</span></td>
+                                            <td>134</td>
+                                            <td><span class="badge bg-success">85%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <span class="rank-badge rank-3">3</span>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-medal text-warning me-2"></i>
+                                                    <strong>TicTacPro</strong>
+                                                </div>
+                                            </td>
+                                            <td><span class="fw-bold text-success">11,250</span></td>
+                                            <td>98</td>
+                                            <td><span class="badge bg-success">92%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="rank-badge">4</span></td>
+                                            <td><strong>RockPaperWin</strong></td>
+                                            <td><span class="fw-bold text-primary">9,870</span></td>
+                                            <td>87</td>
+                                            <td><span class="badge bg-primary">78%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="rank-badge">5</span></td>
+                                            <td><strong>QuickFingers</strong></td>
+                                            <td><span class="fw-bold text-primary">8,640</span></td>
+                                            <td>76</td>
+                                            <td><span class="badge bg-primary">81%</span></td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td><span class="rank-badge">12</span></td>
+                                            <td>
+                                                <strong id="currentPlayerRow">You</strong>
+                                                <small class="text-muted ms-2">(Your Rank)</small>
+                                            </td>
+                                            <td><span class="fw-bold text-warning" id="yourScore">2,340</span></td>
+                                            <td id="yourGames">23</td>
+                                            <td><span class="badge bg-warning" id="yourWinRate">67%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-star me-2"></i>Your Achievements</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="achievement-item">
+                                <i class="fas fa-trophy text-warning me-2"></i>
+                                <span>First Win</span>
+                                <i class="fas fa-check text-success ms-auto"></i>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-fire text-danger me-2"></i>
+                                <span>5 Win Streak</span>
+                                <i class="fas fa-check text-success ms-auto"></i>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-gamepad text-primary me-2"></i>
+                                <span>Play 50 Games</span>
+                                <i class="fas fa-times text-muted ms-auto"></i>
+                            </div>
+                            <div class="achievement-item">
+                                <i class="fas fa-crown text-warning me-2"></i>
+                                <span>Reach Top 10</span>
+                                <i class="fas fa-times text-muted ms-auto"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-chart-line me-2"></i>Weekly Stats</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-row">
+                                <span>Games This Week:</span>
+                                <span class="fw-bold">12</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Wins This Week:</span>
+                                <span class="fw-bold text-success">8</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Points Earned:</span>
+                                <span class="fw-bold text-primary">+450</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>Rank Change:</span>
+                                <span class="fw-bold text-success">+3 ↗</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>Scoring System</h6>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <i class="fas fa-th-large text-primary me-2"></i>
+                                    Tic-Tac-Toe: 100 pts/win
+                                </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-snake text-success me-2"></i>
+                                    Snake: 10 pts/food eaten
+                                </li>
+                                <li>
+                                    <i class="fas fa-hand-rock text-warning me-2"></i>
+                                    RPS: 50 pts/win
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-info-circle text-primary me-2"></i>
+                <strong class="me-auto">DK FunZone</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastMessage"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="leaderboard.js"></script>
+</body>
+</html>

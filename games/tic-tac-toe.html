@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe - DK FunZone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../styles.css" rel="stylesheet">
+    <style>
+        .board-cell {
+            aspect-ratio: 1;
+            background: #f8f9fa;
+            border: 3px solid #dee2e6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .board-cell:hover {
+            background: #e9ecef;
+            border-color: var(--primary-color);
+        }
+
+        .board-cell.x {
+            color: var(--primary-color);
+        }
+
+        .board-cell.o {
+            color: var(--danger-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../dashboard.html">
+                <i class="fas fa-gamepad me-2"></i>FunZone
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="../dashboard.html">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                </a>
+                <!-- Remove the dark mode toggle button -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Game Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="text-center mb-4">
+                        <h1 class="display-4 text-primary">
+                            <i class="fas fa-th-large me-3"></i>Tic-Tac-Toe
+                        </h1>
+                        <p class="lead">Get three in a row to win!</p>
+                    </div>
+
+                    <div class="game-container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card game-board-card">
+                                    <div class="card-body text-center">
+                                        <div id="gameStatus" class="game-status mb-4">
+                                            <h4 class="text-primary">Player X's Turn</h4>
+                                        </div>
+                                        
+                                        <div id="ticTacToeBoard" class="tic-tac-toe-board mx-auto">
+                                            <div class="board-cell" data-index="0"></div>
+                                            <div class="board-cell" data-index="1"></div>
+                                            <div class="board-cell" data-index="2"></div>
+                                            <div class="board-cell" data-index="3"></div>
+                                            <div class="board-cell" data-index="4"></div>
+                                            <div class="board-cell" data-index="5"></div>
+                                            <div class="board-cell" data-index="6"></div>
+                                            <div class="board-cell" data-index="7"></div>
+                                            <div class="board-cell" data-index="8"></div>
+                                        </div>
+                                        
+                                        <div class="game-controls mt-4">
+                                            <button id="resetGame" class="btn btn-warning me-2">
+                                                <i class="fas fa-redo me-2"></i>New Game
+                                            </button>
+                                            <button id="toggleAI" class="btn btn-info">
+                                                <i class="fas fa-robot me-2"></i>Play vs AI
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Game Stats</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="stat-row">
+                                            <span>Games Played:</span>
+                                            <span class="fw-bold" id="gamesPlayed">0</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span>Player X Wins:</span>
+                                            <span class="fw-bold text-primary" id="playerXWins">0</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span>Player O Wins:</span>
+                                            <span class="fw-bold text-success" id="playerOWins">0</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <span>Draws:</span>
+                                            <span class="fw-bold text-warning" id="draws">0</span>
+                                        </div>
+                                        <hr>
+                                        <div class="stat-row">
+                                            <span>Current Streak:</span>
+                                            <span class="fw-bold" id="currentStreak">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card mt-3">
+                                    <div class="card-header">
+                                        <h6 class="mb-0"><i class="fas fa-info-circle me-2"></i>How to Play</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Click on empty squares to place your mark</li>
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Get 3 in a row (horizontal, vertical, or diagonal)</li>
+                                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Player X always goes first</li>
+                                            <li><i class="fas fa-check text-success me-2"></i>Toggle AI mode to play against computer</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-info-circle text-primary me-2"></i>
+                <strong class="me-auto">DK FunZone</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastMessage"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
+    <script src="tic-tac-toe.js"></script>
+</body>
+</html>
