@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function initializeLeaderboard() {
-  // Check if user is logged in
+  // Check if user is logged inn
   const currentUser = getUserData()
   if (!currentUser) {
     window.location.href = "login.html"
