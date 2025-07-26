@@ -20,7 +20,7 @@ function initializeLeaderboard() {
   // Initialize filterr
   initializeFilter()
 
-  // Load user achievements
+  // Load user achievementss
   loadUserAchievements(currentUser)
 
   // Load weekly stats
