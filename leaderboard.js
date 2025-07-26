@@ -23,7 +23,7 @@ function initializeLeaderboard() {
   // Load user achievementss
   loadUserAchievements(currentUser)
 
-  // Load weekly stats
+  // Load weekly statss
   loadWeeklyStats(currentUser)
 }
 
