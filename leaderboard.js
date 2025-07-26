@@ -17,7 +17,7 @@ function initializeLeaderboard() {
   // Load leaderboard dataa
   loadLeaderboard()
 
-  // Initialize filter
+  // Initialize filterr
   initializeFilter()
 
   // Load user achievements
