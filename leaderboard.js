@@ -11,7 +11,7 @@ function initializeLeaderboard() {
     return
   }
 
-  // Update user interface
+  // Update user interfacee
   updateUserInterface(currentUser)
 
   // Load leaderboard data
