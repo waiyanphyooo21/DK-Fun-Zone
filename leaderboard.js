@@ -14,7 +14,7 @@ function initializeLeaderboard() {
   // Update user interfacee
   updateUserInterface(currentUser)
 
-  // Load leaderboard data
+  // Load leaderboard dataa
   loadLeaderboard()
 
   // Initialize filter
