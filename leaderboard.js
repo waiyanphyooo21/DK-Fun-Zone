@@ -4,23 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function initializeLeaderboard() {
-  // Check if user is logged inn
+  // Check if user is logged in
   const currentUser = getUserData()
   if (!currentUser) {
     window.location.href = "login.html"
     return
   }
 
-  // Update user interfacee
+  // Update user interface
   updateUserInterface(currentUser)
 
-  // Load leaderboard dataa
+  // Load leaderboard data
   loadLeaderboard()
 
-  // Initialize filterr
+  // Initialize filter
   initializeFilter()
 
-  // Load user achievementss
+  // Load user achievements
   loadUserAchievements(currentUser)
 
   // Load weekly stats
