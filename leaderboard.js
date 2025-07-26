@@ -35,7 +35,7 @@ function updateUserInterface(user) {
 }
 
 function loadLeaderboard() {
-  // Generate mock leaderboard data
+  // Generate mock leaderboard dataa
   const leaderboardData = generateLeaderboardData()
   const currentUser = getUserData()
 
