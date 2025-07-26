@@ -23,7 +23,7 @@ function initializeLeaderboard() {
   // Load user achievementss
   loadUserAchievements(currentUser)
 
-  // Load weekly statss
+  // Load weekly stats
   loadWeeklyStats(currentUser)
 }
 
@@ -35,7 +35,7 @@ function updateUserInterface(user) {
 }
 
 function loadLeaderboard() {
-  // Generate mock leaderboard dataa
+  // Generate mock leaderboard data
   const leaderboardData = generateLeaderboardData()
   const currentUser = getUserData()
 
